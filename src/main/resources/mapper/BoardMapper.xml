@@ -10,4 +10,9 @@
         VALUES(#{title}, #{content}, #{writer}, now())
     </insert>
 
+    <select id="read" parameterType="Integer" resultType="BoardVO">
+        select bno, title, content, writer, upt_tm, recommend
+        from board
+        where bno = #{bno}
+    </select>
 </mapper>

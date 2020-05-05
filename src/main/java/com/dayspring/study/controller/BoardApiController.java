@@ -5,10 +5,7 @@ import com.dayspring.study.vo.BoardVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,10 +21,21 @@ public class BoardApiController {
             int result = boardService.regist(vo);
 
             if(result>0){
-                return new ResponseEntity(HttpStatus.OK);
+                return new ResponseEntity<>(HttpStatus.OK);
             }else{
-                return new ResponseEntity(HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
+        }catch(Exception e){
+            throw new Exception(e.getMessage(), e);
+        }
+    }
+
+    @GetMapping
+    public ResponseEntity read(@PathVariable("bno") int bno) throws Exception{
+
+        try{
+            BoardVO vo = boardService.read(bno);
+            return new ResponseEntity<>(HttpStatus.OK);
         }catch(Exception e){
             throw new Exception(e.getMessage(), e);
         }

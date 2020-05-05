@@ -8,4 +8,6 @@ public interface BoardDao {
 
     public int create(BoardVO vo);
 
+    public BoardVO read(int bno);
+
 }

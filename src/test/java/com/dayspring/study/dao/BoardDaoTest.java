@@ -27,7 +27,14 @@ public class BoardDaoTest {
         int result = boardService.regist(vo);
 
         Assert.assertTrue(result>0);
+    }
 
-
+    @Test
+    public void read() throws Exception{
+        int bno = 1;
+        BoardVO vo = boardService.read(bno);
+        Assert.assertTrue(vo.getTitle().equals("글 등록 테스트"));
+        Assert.assertTrue(vo.getContent().equals("글 내용 등록 테스트"));
+        Assert.assertTrue(vo.getWriter().equals("admin"));
     }
 }
