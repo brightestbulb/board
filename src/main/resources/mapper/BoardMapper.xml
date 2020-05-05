@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.dayspring.study.dao.BoardDao">
+
+    <insert id="create" parameterType="BoardVO">
+        INSERT INTO board(title, content, writer, upt_tm)
+        VALUES(#{title}, #{content}, #{writer}, now())
+    </insert>
+
+</mapper>
